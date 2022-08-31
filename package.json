@@ -1,7 +1,7 @@
 {
-  "name": "aci-create-action",
+  "name": "aca-create-action",
   "version": "0.0.1",
-  "description": "GitHub Action to Deploy to Azure Container Instances",
+  "description": "GitHub Action to Deploy to Azure Container Apps",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -9,17 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Azure/aci-deploy-action.git"
+    "url": "git+https://github.com/Azure/aca-deploy-action.git"
   },
-  "author": "Mitesh Shah",
+  "author": "Yuki Hattori",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Azure/aci-deploy-action/issues"
+    "url": "https://github.com/Azure/aca-deploy-action/issues"
   },
-  "homepage": "https://github.com/Azure/aci-deploy-action#readme",
+  "homepage": "https://github.com/Azure/aca-deploy-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.2",
-    "@azure/arm-containerinstance": "^5.4.0",
+    "@azure/arm-appcontainers": "^1.1.0",
     "@types/q": "^1.5.2",
     "azure-actions-webclient": "^1.0.10"
   },
