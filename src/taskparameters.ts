@@ -5,30 +5,10 @@ export class TaskParameters {
     private static taskparams: TaskParameters;
 
     private _resourceGroup: string;
-    public get resourceGroup() {
-        return this._resourceGroup;
-    }
-
     private _containerAppName: string;
-    public get containerAppName() {
-        return this._containerAppName;
-    }
-
-    //private _containerAppEnvelope: ContainerApp; 
-    //public get containerAppEnvelope() {
-    //    return this._containerAppEnvelope;
-    //}
-
     private _location: string; 
-    public get location() {
-        return this._location;
-    }
-
     private _subscriptionId: string;
-    public get subscriptionId() {
-        return this._subscriptionId;
-    }
-
+    private _managedEnvironmentName: string;
 
     //private _commandLine: Array<string>;
     //private _cpu: number;
@@ -58,6 +38,10 @@ export class TaskParameters {
         this._resourceGroup = core.getInput('resource-group', { required: true });
         this._containerAppName = core.getInput('name', { required: true });
         this._location = core.getInput('location', { required: true });
+        this._managedEnvironmentName = core.getInput('managed-environment-name', { required: true })
+
+
+
         //this._containerAppEnvelope = { tags: { tag1: "value1", tag2: "value2" }, location: this._location};
         //this._commandLine = [];
         //let commandLine = core.getInput("command-line");
@@ -326,6 +310,25 @@ export class TaskParameters {
     //     return this._volumeMounts;
     // }
 
+    public get resourceGroup() {
+        return this._resourceGroup;
+    }
+
+    public get containerAppName() {
+        return this._containerAppName;
+    }
+
+    public get location() {
+        return this._location;
+    }
+
+    public get subscriptionId() {
+        return this._subscriptionId;
+    }
+
+    public get managedEnvironmentName() {
+        return this._managedEnvironmentName;
+    }
 
 
 }

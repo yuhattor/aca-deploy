@@ -19,13 +19,16 @@ async function main() {
         var taskParams = TaskParameters.getTaskParams();
         let credential: TokenCredential = new DefaultAzureCredential()
 
+        // TBD: Need to get subscriptionId not from taskParams, but from credential.
+        let subscriptionId = taskParams.subscriptionId
+
         console.log("Predeployment Steps Started");
         const client = new ContainerAppsAPIClient(credential, taskParams.subscriptionId);
 
         const containerAppEnvelope: ContainerApp = {
-            location: "East US",
+            location: taskParams.location,
             managedEnvironmentId:
-              "/subscriptions/a4deccb1-a1f6-40cb-a923-f55a7d22c32d/resourceGroups/sample-rg/providers/Microsoft.App/managedEnvironments/my-container-env",
+              `/subscriptions/${subscriptionId}/resourceGroups/${taskParams.resourceGroup}/providers/Microsoft.App/managedEnvironments/${taskParams.managedEnvironmentName}`,
             template: {
               containers: [
                 {

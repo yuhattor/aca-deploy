@@ -22,7 +22,8 @@ jobs:
     - name: 'Deploy to Azure Container Apps'
       uses: ./
       with:
-        resource-group: sample-rg1
+        resource-group: sample-rg
         name: yuhattor-test
         location: 'East US'
         subscription-id: 'a4deccb1-a1f6-40cb-a923-f55a7d22c32d'
+        managed-environment-name: 'my-container-env'
