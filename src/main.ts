@@ -45,18 +45,14 @@ async function main() {
             containerAppEnvelope,
             );
         
-        console.log("Result raw");
-        console.log(containerAppDeploymentResult);
-        console.log("Result");
-        console.log(containerAppDeploymentResult.toString());
-        if(containerAppDeploymentResult.toString() == "Succeeded") {
-            console.log("Deployment Succeeded.");
-            //let appUrlWithoutPort = containerAppDeploymentResult.properties.ingress.fqdn;
-            //let port = taskParams.ports[0].port;
-            //let appUrl = "http://"+appUrlWithoutPort+":"+port.toString()+"/"
-            //core.setOutput("app-url", appUrl);
-            //console.log("Your App has been deployed at: "+appUrl);
-            console.log("Deployment Result: "+containerAppDeploymentResult);
+        if(containerAppDeploymentResult.name){
+          console.log("Deployment Succeeded.");
+          //let appUrlWithoutPort = containerAppDeploymentResult.properties.ingress.fqdn;
+          //let port = taskParams.ports[0].port;
+          //let appUrl = "http://"+appUrlWithoutPort+":"+port.toString()+"/"
+          //core.setOutput("app-url", appUrl);
+          //console.log("Your App has been deployed at: "+appUrl);
+          console.log("Deployment Result: "+containerAppDeploymentResult);
         } else {
             console.log("Deployment Result: "+containerAppDeploymentResult);
             throw Error("Container Deployment Failed"+containerAppDeploymentResult);
