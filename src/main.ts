@@ -60,8 +60,8 @@ async function main() {
             template: {
               containers: [
                 {
-                  name: "testcontainer-app1",
-                  image: "repo/testcontainerApp0:v1",
+                  name: "mynginx",
+                  image: "nginx:latest",
                   probes: [
                     {
                       type: "Liveness",
