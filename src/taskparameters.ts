@@ -18,10 +18,10 @@ export class TaskParameters {
         return this._containerAppName;
     }
 
-    private _containerAppEnvelope: ContainerApp; 
-    public get containerAppEnvelope() {
-        return this._containerAppEnvelope;
-    }
+    //private _containerAppEnvelope: ContainerApp; 
+    //public get containerAppEnvelope() {
+    //    return this._containerAppEnvelope;
+    //}
 
     private _location: string; 
     public get location() {
