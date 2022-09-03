@@ -4,7 +4,6 @@
   "description": "GitHub Action to Deploy to Azure Container Apps",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,11 +20,9 @@
     "@actions/core": "^1.9.1",
     "@azure/arm-appcontainers": "^1.1.0",
     "@azure/identity": "^2.1.0",
-    "@types/q": "^1.5.2",
     "azure-actions-webclient": "^1.0.10"
   },
   "devDependencies": {
-    "@types/node": "^13.5.2",
-    "typescript": "^3.9.10"
+    "@types/node": "^13.5.2"
   }
 }
