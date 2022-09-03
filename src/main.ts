@@ -1,13 +1,7 @@
 import core from "@actions/core";
-import * as crypto from "crypto";
-
-//import * as core from '@actions/core';
-//import { AuthorizerFactory } from "azure-actions-webclient/AuthorizerFactory";
-//import { IAuthorizer } from "azure-actions-webclient/Authorizer/IAuthorizer";
-//import { async } from 'q';
-//import { ContainerInstanceManagementClient, ContainerInstanceManagementModels, ContainerInstanceManagementMappers } from "@azure/arm-containerinstance";
+import crypto from "crypto";
 import { ContainerAppsAPIClient, ContainerApp} from "@azure/arm-appcontainers";
-import { TokenCredential, DefaultAzureCredential, DefaultAzureCredentialOptions} from "@azure/identity";
+import { TokenCredential, DefaultAzureCredential} from "@azure/identity";
 
 import { TaskParameters } from "./taskparameters";
 

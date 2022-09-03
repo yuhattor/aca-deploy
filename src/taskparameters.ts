@@ -1,9 +1,5 @@
-import * as core from '@actions/core';
-
-import { IAuthorizer } from "azure-actions-webclient/Authorizer/IAuthorizer";
-
+import core from '@actions/core';
 import fs = require('fs');
-import { ContainerApp, } from "@azure/arm-appcontainers"
   
 export class TaskParameters {
     private static taskparams: TaskParameters;
