@@ -25,13 +25,13 @@ inputs:
     dapr-enabled:
         description: 'Enable Dapr'
         required: false
-    ingress-customDomain:
+    ingress-custom-domains:
         description: 'Custom Domain for Ingress'
         required: false
     ingress-external:
         description: 'External Ingress'
         required: false
-    ingress-targetPort:
+    ingress-target-port:
         description: 'Ingress Target Port'
         required: false
     ingress-traffic:
