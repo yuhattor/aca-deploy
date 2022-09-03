@@ -45,6 +45,8 @@ async function main() {
             containerAppEnvelope,
             );
         
+        console.log("Result");
+        console.log(containerAppDeploymentResult.toString());
         console.log("operation state");
         console.log(containerAppDeploymentResult.getOperationState.toString());
         console.log("");
