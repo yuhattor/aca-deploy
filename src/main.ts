@@ -27,7 +27,7 @@ async function main() {
 
     const containerAppEnvelope: ContainerApp = {
       configuration: {
-        dapr: { appPort: 3000, appProtocol: "http", enabled: true },
+        dapr: { appPort: taskParams.daprAppPort, appProtocol: taskParams.daprAppProtocol, enabled: taskParams.daprEnabled },
       },
       location: taskParams.location,
       managedEnvironmentId:

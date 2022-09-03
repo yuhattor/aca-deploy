@@ -4,11 +4,18 @@ import fs = require('fs');
 export class TaskParameters {
     private static taskparams: TaskParameters;
 
+    // Required basic parameters
     private _resourceGroup: string;
     private _containerAppName: string;
     private _location: string; 
     private _subscriptionId: string;
     private _managedEnvironmentName: string;
+
+    // Optional Dapr parameters
+    private _daprEnabled: boolean;
+    private _daprAppPort: number;
+    private _daprAppProtocol: string;
+
 
     //private _commandLine: Array<string>;
     //private _cpu: number;
@@ -34,11 +41,18 @@ export class TaskParameters {
     
 
     private constructor() {
+
+        // Required basic parameters
         this._subscriptionId = core.getInput('subscription-id',{ required: true } );
         this._resourceGroup = core.getInput('resource-group', { required: true });
         this._containerAppName = core.getInput('name', { required: true });
         this._location = core.getInput('location', { required: true });
         this._managedEnvironmentName = core.getInput('managed-environment-name', { required: true })
+
+        // Optional Dapr parameters
+        this._daprAppPort = parseInt(core.getInput('dapr-app-port', { required: false }));
+        this._daprAppProtocol = core.getInput('dapr-app-protocol', { required: false });
+        this._daprEnabled = core.getInput('dapr-enabled', { required: false }) == "true";
 
 
 
@@ -310,6 +324,8 @@ export class TaskParameters {
     //     return this._volumeMounts;
     // }
 
+
+    // Required basic parameters
     public get resourceGroup() {
         return this._resourceGroup;
     }
@@ -330,5 +346,17 @@ export class TaskParameters {
         return this._managedEnvironmentName;
     }
 
+    // Optional Dapr parameters
+    public get daprAppPort() {
+        return this._daprAppPort;
+    }
+    
+    public get daprAppProtocol() {
+        return this._daprAppProtocol;
+    }
+
+    public get daprEnabled() {
+        return this._daprEnabled;
+    }
 
 }

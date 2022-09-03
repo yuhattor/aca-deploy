@@ -16,6 +16,16 @@ inputs:
     managed-environment-name:
         description: 'Name of the Managed Environment'
         required: true
+    daprAppPort:
+        description: 'Port of the Dapr App'
+        required: false
+    daprAppProtocol:
+        description: 'Protocol of the Dapr App'
+        required: false
+    daprEnabled:
+        description: 'Enable Dapr'
+        required: false
+
 outputs:
     app-url:
         description: 'URL of the Deployed Application'
