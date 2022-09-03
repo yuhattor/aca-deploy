@@ -1,5 +1,5 @@
-import core from "@actions/core";
-import crypto from "crypto";
+import * as core from "@actions/core";
+import * as crypto from "crypto";
 import { ContainerAppsAPIClient, ContainerApp} from "@azure/arm-appcontainers";
 import { TokenCredential, DefaultAzureCredential} from "@azure/identity";
 
