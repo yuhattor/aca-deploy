@@ -50,14 +50,13 @@ async function main() {
     const ingresConfig = (taskParams.ingressExternal && taskParams.ingressTargetPort && taskParams.ingressTraffic && taskParams.ingressCustomDomains) ? {
       external: taskParams.ingressExternal, targetPort: taskParams.ingressTargetPort, traffic: taskParams.ingressTraffic, customDomains: taskParams.ingressCustomDomains
     } : {
-      // It's a default payload
-      customDomains: [], traffic: [], external: true, targetPort: 3000
+      // If any one of these is missing, leave it empty.
     }
 
     const containerAppEnvelope: ContainerApp = {
       configuration: {
         dapr: daprConfig,
-        ingress: ingresConfig
+        //ingress: ingresConfig
       },
       location: taskParams.location,
       managedEnvironmentId:
