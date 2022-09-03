@@ -18,9 +18,9 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
     - name: 'Deploy to Azure Container Apps'
-      uses: "yuhattor/aca-deploy@main"
+      uses: "yuhattor/aca-deploy@v1.1"
+
       with:
         resource-group: sample-rg
         name: yuhattor-container
