@@ -52,6 +52,7 @@ async function main() {
       // If any one of these is missing, leave it empty.
     }
 
+
     const containerAppEnvelope: ContainerApp = {
       configuration: {
         dapr: daprConfig,
