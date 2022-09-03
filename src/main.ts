@@ -37,7 +37,6 @@ async function main() {
           };
 
         console.log("Deployment Step Started");
-        console.log(containerAppEnvelope);
 
         let containerAppDeploymentResult = await client.containerApps.beginCreateOrUpdateAndWait(
             taskParams.resourceGroup, 
