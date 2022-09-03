@@ -52,16 +52,7 @@ async function main() {
                   //]
                 }
               ],
-              //scale: {
-              //  maxReplicas: 5,
-              //  minReplicas: 1,
-              //  rules: [
-              //    {
-              //      name: "httpscalingrule",
-              //      custom: { type: "http", metadata: { concurrentRequests: "50" } }
-              //    }
-              //  ]
-              //}
+   
             }
           };
 

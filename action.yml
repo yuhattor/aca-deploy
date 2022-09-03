@@ -16,25 +16,25 @@ inputs:
     managed-environment-name:
         description: 'Name of the Managed Environment'
         required: true
-    daprAppPort:
+    dapr-app-port:
         description: 'Port of the Dapr App'
         required: false
-    daprAppProtocol:
+    dapr-app-protocol:
         description: 'Protocol of the Dapr App'
         required: false
-    daprEnabled:
+    dapr-enabled:
         description: 'Enable Dapr'
         required: false
-    IngressCustomDomain:
+    ingress-customDomain:
         description: 'Custom Domain for Ingress'
         required: false
-    IngressExternal:
+    ingress-external:
         description: 'External Ingress'
         required: false
-    IngressTargetPort:
+    ingress-targetPort:
         description: 'Ingress Target Port'
         required: false
-    IngressTraffic:
+    ingress-traffic:
         description: 'Ingress Traffic'
         required: false
 
