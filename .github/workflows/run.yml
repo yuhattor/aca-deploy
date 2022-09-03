@@ -13,7 +13,8 @@ jobs:
       with:
         node-version: '16.13.0'
         registry-url: 'https://npm.pkg.github.com'
-    - run: npm install debug
+    - run: npm install 
+    - run: tsc
 
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
