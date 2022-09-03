@@ -44,6 +44,7 @@ async function main() {
             containerAppEnvelope,
             );
         
+        console.log(containerAppDeploymentResult)
         if(containerAppDeploymentResult.name){
           console.log("Deployment Succeeded.");
           //let appUrlWithoutPort = containerAppDeploymentResult.properties.ingress.fqdn;
@@ -53,7 +54,7 @@ async function main() {
           //console.log("Your App has been deployed at: "+appUrl);
           console.log("Deployment Result: " + containerAppDeploymentResult);
         } else {
-            throw Error("Container Deployment Failed" + containerAppDeploymentResult);
+          throw Error("Container Deployment Failed" + containerAppDeploymentResult);
         }
     }
     catch (error: string | any) {
