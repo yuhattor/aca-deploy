@@ -45,6 +45,7 @@ async function main() {
             containerAppEnvelope,
             );
         
+        console.log(containerAppDeploymentResult.getOperationState.toString());
         if(containerAppDeploymentResult.getOperationState.toString() == "Succeeded") {
             console.log("Deployment Succeeded.");
             //let appUrlWithoutPort = containerAppDeploymentResult.properties.ingress.fqdn;
