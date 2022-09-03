@@ -18,13 +18,11 @@
   },
   "homepage": "https://github.com/Azure/aca-deploy-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.2",
+    "@actions/core": "^1.9.1",
     "@azure/arm-appcontainers": "^1.1.0",
     "@azure/identity": "^2.1.0",
-    "@azure/ms-rest-js": "^2.6.2",
     "@types/q": "^1.5.2",
-    "azure-actions-webclient": "^1.0.10",
-    "ms-rest-js": "^1.0.1"
+    "azure-actions-webclient": "^1.0.10"
   },
   "devDependencies": {
     "@types/node": "^13.5.2",
