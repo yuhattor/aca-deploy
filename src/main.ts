@@ -9,7 +9,6 @@ var prefix = !!process.env.AZURE_HTTP_USER_AGENT ? `${process.env.AZURE_HTTP_USE
 
 async function main() {
 
-
     try {
         // Set user agent variable
         let usrAgentRepo = crypto.createHash('sha256').update(`${process.env.GITHUB_REPOSITORY}`).digest('hex');
@@ -145,7 +144,7 @@ async function main() {
     }
     finally{
         // Reset AZURE_HTTP_USER_AGENT
-        core.exportVariable('AZURE_HTTP_USER_AGENT', prefix);
+        //core.exportVariable('AZURE_HTTP_USER_AGENT', prefix);
     }
 }
 
