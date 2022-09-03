@@ -52,20 +52,18 @@ async function main() {
           //let appUrl = "http://"+appUrlWithoutPort+":"+port.toString()+"/"
           //core.setOutput("app-url", appUrl);
           //console.log("Your App has been deployed at: "+appUrl);
-          console.log("Deployment Result: "+containerAppDeploymentResult);
+          console.log("Deployment Result: " + containerAppDeploymentResult);
         } else {
-            console.log("Deployment Result: "+containerAppDeploymentResult);
-            throw Error("Container Deployment Failed"+containerAppDeploymentResult);
+            throw Error("Container Deployment Failed" + containerAppDeploymentResult);
         }
     }
-    catch (error) {
+    catch (error: string | any) {
         console.log("Deployment Failed with Error: " + error);
-        // core.setFailed(error);
+        core.setFailed(error);
     }
     finally{
-        console.log("ERRRRROOR");
         // Reset AZURE_HTTP_USER_AGENT
-        // core.exportVariable('AZURE_HTTP_USER_AGENT', prefix);
+        core.exportVariable('AZURE_HTTP_USER_AGENT', prefix);
     }
 }
 
