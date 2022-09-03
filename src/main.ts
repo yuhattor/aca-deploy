@@ -16,9 +16,6 @@ async function main() {
         let userAgentString = (!!prefix ? `${prefix}+` : '') + `GITHUBACTIONS_${actionName}_${usrAgentRepo}`;
         core.exportVariable('AZURE_HTTP_USER_AGENT', userAgentString);
 
-        // let endpoint: IAuthorizer = await AuthorizerFactory.getAuthorizer();
-        // let bearerToken = await endpoint.getToken();
-        // let creds = new TokenCredentials(bearerToken);
         var taskParams = TaskParameters.getTaskParams();
         let credential: TokenCredential = new DefaultAzureCredential()
 
@@ -47,9 +44,6 @@ async function main() {
             taskParams.containerAppName, 
             containerAppEnvelope,
             );
-
-        console.log("hey");
-        console.log("hey");
         
         if(containerAppDeploymentResult.getOperationState.toString() == "Succeeded") {
             console.log("Deployment Succeeded.");
