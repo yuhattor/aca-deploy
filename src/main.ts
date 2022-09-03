@@ -143,6 +143,7 @@ async function main() {
         //core.setFailed(error);
     }
     finally{
+        core.debug("ERRRRROOR");
         // Reset AZURE_HTTP_USER_AGENT
         //core.exportVariable('AZURE_HTTP_USER_AGENT', prefix);
     }
