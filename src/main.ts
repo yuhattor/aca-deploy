@@ -29,7 +29,7 @@ async function main() {
             template: {
               containers: [
                 {
-                  name: "simple-hello-world-containerA)32",
+                  name: "simple-hello-world-container",
                   image: "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
                 }
               ],
