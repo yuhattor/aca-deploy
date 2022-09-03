@@ -60,7 +60,7 @@ async function main() {
             template: {
               containers: [
                 {
-                  name: "testcontainerApp0",
+                  name: "testcontainer-app1",
                   image: "repo/testcontainerApp0:v1",
                   probes: [
                     {
