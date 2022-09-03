@@ -25,6 +25,18 @@ inputs:
     daprEnabled:
         description: 'Enable Dapr'
         required: false
+    IngressCustomDomain:
+        description: 'Custom Domain for Ingress'
+        required: false
+    IngressExternal:
+        description: 'External Ingress'
+        required: false
+    IngressTargetPort:
+        description: 'Ingress Target Port'
+        required: false
+    IngressTraffic:
+        description: 'Ingress Traffic'
+        required: false
 
 outputs:
     app-url:

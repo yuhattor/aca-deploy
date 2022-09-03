@@ -16,6 +16,11 @@ export class TaskParameters {
     private _daprAppPort: number;
     private _daprAppProtocol: string;
 
+    // Optional Ingress parameters
+    private _ingressExternal: boolean;
+    private _ingressTargetPort: number;
+    private _ingressCustomDomains: any[]; 
+    private _ingressTraffic: any[];
 
     //private _commandLine: Array<string>;
     //private _cpu: number;
@@ -54,6 +59,11 @@ export class TaskParameters {
         this._daprAppProtocol = core.getInput('dapr-app-protocol', { required: false });
         this._daprEnabled = core.getInput('dapr-enabled', { required: false }) == "true";
 
+        // Optional Ingress parameters
+        this._ingressExternal = core.getInput('ingress-external', { required: false }) == "true";
+        this._ingressTargetPort = parseInt(core.getInput('ingress-target-port', { required: false }));
+        this._ingressCustomDomains = core.getInput('ingress-custom-domains', { required: false }).split(',');
+        this._ingressTraffic = core.getInput('ingress-traffic', { required: false }).split(',');
 
 
         //this._containerAppEnvelope = { tags: { tag1: "value1", tag2: "value2" }, location: this._location};
@@ -357,6 +367,23 @@ export class TaskParameters {
 
     public get daprEnabled() {
         return this._daprEnabled;
+    }
+
+    // Optional Ingress parameters
+    public get ingressExternal(){
+        return this._ingressExternal;
+    }
+
+    public get ingressTargetPort(){
+        return this._ingressTargetPort;
+    }
+
+    public get ingressTraffic(){
+        return this._ingressTraffic;
+    }
+
+    public get ingressCustomDomains(){
+       return this._ingressCustomDomains;
     }
 
 }
