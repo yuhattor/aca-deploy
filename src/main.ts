@@ -56,7 +56,7 @@ async function main() {
             },
             location: "East US",
             managedEnvironmentId:
-              "/subscriptions/a4deccb1-a1f6-40cb-a923-f55a7d22c32d/resourceGroups/sample-rg/providers/Microsoft.App/managedEnvironments/testenv",
+              "/subscriptions/a4deccb1-a1f6-40cb-a923-f55a7d22c32d/resourceGroups/sample-rg/providers/Microsoft.App/managedEnvironments/testenv2",
             template: {
               containers: [
                 {
