@@ -45,13 +45,13 @@ async function main() {
     // Sample: 
     //      traffic: [ { label: "production", revisionName: "testcontainerApp0-ab1234", weight: 100 } ]
     // TBD: Need to decide how to represent the associative array
-    //      For now, it's an empty array.
+    //      For now, it's a default payload
     const ingresConfig = (taskParams.ingressExternal && taskParams.ingressTargetPort && taskParams.ingressTraffic && taskParams.ingressCustomDomains) ? {
       external: taskParams.ingressExternal, targetPort: taskParams.ingressTargetPort, traffic: taskParams.ingressTraffic, customDomains: taskParams.ingressCustomDomains
     } : {
-      // If any one of these is missing, leave it empty.
+      // It's a default payload
+      customDomains: [], traffic: [], external: true, targetPort: 3000
     }
-
 
     const containerAppEnvelope: ContainerApp = {
       configuration: {
