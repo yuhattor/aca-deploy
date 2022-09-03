@@ -28,31 +28,7 @@ async function main() {
         const containerAppEnvelope: ContainerApp = {
             configuration: {
               dapr: { appPort: 3000, appProtocol: "http", enabled: true },
-              //ingress: {
-              //  customDomains: [
-              //    {
-              //      name: "www.my-name.com",
-              //      bindingType: "SniEnabled",
-              //      //certificateId:
-              //      //  "/subscriptions/a4deccb1-a1f6-40cb-a923-f55a7d22c32d/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-name-dot-com",
-              //    },
-              //    {
-              //      name: "www.my-other-name.com",
-              //      bindingType: "SniEnabled",
-              //      //certificateId:
-              //      //  "/subscriptions/a4deccb1-a1f6-40cb-a923-f55a7d22c32d/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com",
-              //    }
-              //  ],
-              //  external: true,
-              //  targetPort: 3000,
-              //  traffic: [
-              //    {
-              //      label: "production",
-              //      revisionName: "testcontainerApp0-ab1234",
-              //      weight: 100
-              //    }
-              //  ]
-              //}
+      
             },
             location: "east us",
             managedEnvironmentId:

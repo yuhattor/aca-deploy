@@ -30,3 +30,7 @@ jobs:
         daprAppPort: 3000
         daprAppProtocol: 'http'
         daprEnabled: true
+        ingressCustomDomains: ""
+        ingressExternal: true
+        ingressTargetPort: 3000
+        ingressTraffic: ""
