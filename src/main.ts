@@ -10,7 +10,7 @@ var prefix = !!process.env.AZURE_HTTP_USER_AGENT ? `${process.env.AZURE_HTTP_USE
 async function main() {
 
   try {
-    // Set user agent variable
+    // Set user agent variable.
     let usrAgentRepo = crypto.createHash('sha256').update(`${process.env.GITHUB_REPOSITORY}`).digest('hex');
     let actionName = 'DeployAzureContainerApp';
     let userAgentString = (!!prefix ? `${prefix}+` : '') + `GITHUBACTIONS_${actionName}_${usrAgentRepo}`;
@@ -24,10 +24,19 @@ async function main() {
 
     console.log("Predeployment Steps Started");
     const client = new ContainerAppsAPIClient(credential, taskParams.subscriptionId);
+    
+    // Set up a Dapr configuration
+    // TBD: Determine what is required and what is optional for each condition and set them appropriately.
+    //      For now, it''s off if they don't have everything in place.
+    const daprConfig = (taskParams.daprEnabled && taskParams.daprAppPort && taskParams.daprAppProtocol) ? { 
+      appPort: taskParams.daprAppPort, appProtocol: taskParams.daprAppProtocol, enabled: taskParams.daprEnabled 
+    } : {
+      // If any one of these is missing, leave it empty.
+    };
 
     const containerAppEnvelope: ContainerApp = {
       configuration: {
-        dapr: { appPort: taskParams.daprAppPort, appProtocol: taskParams.daprAppProtocol, enabled: taskParams.daprEnabled },
+        dapr: daprConfig,
       },
       location: taskParams.location,
       managedEnvironmentId:
@@ -50,20 +59,15 @@ async function main() {
       containerAppEnvelope,
     );
 
-    console.log("Deployment Succeeded.");
-    //let appUrlWithoutPort = containerAppDeploymentResult.properties.ingress.fqdn;
-    //let port = taskParams.ports[0].port;
-    //let appUrl = "http://"+appUrlWithoutPort+":"+port.toString()+"/"
-    //core.setOutput("app-url", appUrl);
-    //console.log("Your App has been deployed at: "+appUrl);
-    console.log("Deployment Result: " + containerAppDeploymentResult);
+    // TBD: Need to prettify the output.
+    console.log("Deployment Succeeded\n\n" + containerAppDeploymentResult);
   }
   catch (error: string | any) {
     console.log("Deployment Failed with Error: " + error);
     core.setFailed(error);
   }
   finally {
-    // Reset AZURE_HTTP_USER_AGENT
+    // Reset AZURE_HTTP_USER_AGENT.
     core.exportVariable('AZURE_HTTP_USER_AGENT', prefix);
   }
 }
