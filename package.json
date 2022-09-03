@@ -26,6 +26,7 @@
     "@azure/identity": "^2.1.0"
   },
   "devDependencies": {
-    "@types/node": "^13.13.52"
+    "@types/node": "^13.13.52",
+    "debug": "^4.3.4"
   }
 }
