@@ -1,6 +1,7 @@
-import * as core from '@actions/core';
+import core from "@actions/core";
 import * as crypto from "crypto";
 
+//import * as core from '@actions/core';
 //import { AuthorizerFactory } from "azure-actions-webclient/AuthorizerFactory";
 //import { IAuthorizer } from "azure-actions-webclient/Authorizer/IAuthorizer";
 //import { async } from 'q';
@@ -14,7 +15,7 @@ var prefix = !!process.env.AZURE_HTTP_USER_AGENT ? `${process.env.AZURE_HTTP_USE
 
 async function main() {
 
-    
+
     try {
         // Set user agent variable
         let usrAgentRepo = crypto.createHash('sha256').update(`${process.env.GITHUB_REPOSITORY}`).digest('hex');
