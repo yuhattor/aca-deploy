@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/Azure/aca-deploy-action.git"
   },
+  "engines": {
+    "node": "16.13.0",
+    "npm": "8.1.0"
+  },
   "author": "Yuki Hattori",
   "license": "MIT",
   "bugs": {
@@ -23,9 +27,5 @@
   },
   "devDependencies": {
     "@types/node": "^13.5.2"
-  },
-  "engines": {
-    "node": "16.13.0",
-    "npm": "8.1.0"
   }
 }
