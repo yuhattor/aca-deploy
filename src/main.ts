@@ -140,12 +140,12 @@ async function main() {
     }
     catch (error) {
         console.log("Deployment Failed with Error: " + error);
-        //core.setFailed(error);
+        // core.setFailed(error);
     }
     finally{
         console.log("ERRRRROOR");
         // Reset AZURE_HTTP_USER_AGENT
-        //core.exportVariable('AZURE_HTTP_USER_AGENT', prefix);
+        // core.exportVariable('AZURE_HTTP_USER_AGENT', prefix);
     }
 }
 
