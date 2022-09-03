@@ -47,22 +47,9 @@ async function main() {
         
         console.log("Result raw");
         console.log(containerAppDeploymentResult);
-        console.log("Result 2");
-        console.log(containerAppDeploymentResult.pollUntilDone());
         console.log("Result");
         console.log(containerAppDeploymentResult.toString());
-        console.log("operation state");
-        console.log(containerAppDeploymentResult.getOperationState.toString());
-        console.log("");
-        console.log("is done");
-        console.log(containerAppDeploymentResult.isDone.toString());
-        console.log("");
-        console.log("getResult");
-        console.log(containerAppDeploymentResult.getResult()?.toString());
-        console.log("");
-        console.log("getResult");
-        console.log(containerAppDeploymentResult.onProgress.toString());
-        if(containerAppDeploymentResult.getOperationState.toString() == "Succeeded") {
+        if(containerAppDeploymentResult.toString() == "Succeeded") {
             console.log("Deployment Succeeded.");
             //let appUrlWithoutPort = containerAppDeploymentResult.properties.ingress.fqdn;
             //let port = taskParams.ports[0].port;
