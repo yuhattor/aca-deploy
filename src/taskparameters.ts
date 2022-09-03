@@ -58,13 +58,12 @@ export class TaskParameters {
     //private _volumeMounts: Array<ContainerInstanceManagementModels.VolumeMount>;
     
 
-    private constructor(endpoint: IAuthorizer) {
-        this._subscriptionId = endpoint.subscriptionID;
+    private constructor() {
+        this._subscriptionId = core.getInput('subscription-id',{ required: true } );
         this._resourceGroup = core.getInput('resource-group', { required: true });
         this._containerAppName = core.getInput('name', { required: true });
         this._location = core.getInput('location', { required: true });
-        this._containerAppEnvelope = { tags: { tag1: "value1", tag2: "value2" }, location: this._location};
-        this._endpoint = endpoint;
+        //this._containerAppEnvelope = { tags: { tag1: "value1", tag2: "value2" }, location: this._location};
         //this._commandLine = [];
         //let commandLine = core.getInput("command-line");
         //if(commandLine) {
@@ -241,9 +240,9 @@ export class TaskParameters {
     //    } else {};
     //}
 
-    public static getTaskParams(endpoint: IAuthorizer) {
+    public static getTaskParams() {
         if(!this.taskparams) {
-            this.taskparams = new TaskParameters(endpoint);
+            this.taskparams = new TaskParameters();
         }
         return this.taskparams;
     }

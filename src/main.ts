@@ -1,19 +1,14 @@
 import * as core from '@actions/core';
 import * as crypto from "crypto";
 
-import { AuthorizerFactory } from "azure-actions-webclient/AuthorizerFactory";
-import { IAuthorizer } from "azure-actions-webclient/Authorizer/IAuthorizer";
-import { async } from 'q';
+//import { AuthorizerFactory } from "azure-actions-webclient/AuthorizerFactory";
+//import { IAuthorizer } from "azure-actions-webclient/Authorizer/IAuthorizer";
+//import { async } from 'q';
 //import { ContainerInstanceManagementClient, ContainerInstanceManagementModels, ContainerInstanceManagementMappers } from "@azure/arm-containerinstance";
 import { ContainerAppsAPIClient, ContainerApp} from "@azure/arm-appcontainers";
-
-import { TokenCredentials, ServiceClientCredentials } from "@azure/ms-rest-js";
-import { DefaultAzureCredential } from "@azure/identity";
-
+import { TokenCredential, DefaultAzureCredential, DefaultAzureCredentialOptions} from "@azure/identity";
 
 import { TaskParameters } from "./taskparameters";
-
-
 
 var prefix = !!process.env.AZURE_HTTP_USER_AGENT ? `${process.env.AZURE_HTTP_USER_AGENT}` : "";
 
@@ -26,13 +21,14 @@ async function main() {
         let userAgentString = (!!prefix ? `${prefix}+` : '') + `GITHUBACTIONS_${actionName}_${usrAgentRepo}`;
         core.exportVariable('AZURE_HTTP_USER_AGENT', userAgentString);
 
-        let endpoint: IAuthorizer = await AuthorizerFactory.getAuthorizer();
-        var taskParams = TaskParameters.getTaskParams(endpoint);
-        let bearerToken = await endpoint.getToken();
-        let creds = new TokenCredentials(bearerToken);
+        // let endpoint: IAuthorizer = await AuthorizerFactory.getAuthorizer();
+        // let bearerToken = await endpoint.getToken();
+        // let creds = new TokenCredentials(bearerToken);
+        var taskParams = TaskParameters.getTaskParams();
+        let credential: TokenCredential = new DefaultAzureCredential()
 
         core.debug("Predeployment Steps Started");
-        const client = new ContainerAppsAPIClient(creds, taskParams.subscriptionId);
+        const client = new ContainerAppsAPIClient(credential, taskParams.subscriptionId);
 
         const containerAppEnvelope: ContainerApp = {
             configuration: {
