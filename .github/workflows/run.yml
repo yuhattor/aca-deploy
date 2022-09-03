@@ -15,7 +15,6 @@ jobs:
         registry-url: 'https://npm.pkg.github.com'
     - run: npm install 
     - run: npm install 
-    - r
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
       with:
