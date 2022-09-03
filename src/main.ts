@@ -10,27 +10,20 @@ var prefix = !!process.env.AZURE_HTTP_USER_AGENT ? `${process.env.AZURE_HTTP_USE
 async function main() {
 
     try {
-        console.log("Deployment Step Started 1 ");
         // Set user agent variable
         let usrAgentRepo = crypto.createHash('sha256').update(`${process.env.GITHUB_REPOSITORY}`).digest('hex');
-        console.log("Deployment Step Started 2");
         let actionName = 'DeployAzureContainerApp';
-        console.log("Deployment Step Started 3");
         let userAgentString = (!!prefix ? `${prefix}+` : '') + `GITHUBACTIONS_${actionName}_${usrAgentRepo}`;
-        console.log("Deployment Step Started 4");
         core.exportVariable('AZURE_HTTP_USER_AGENT', userAgentString);
 
         // let endpoint: IAuthorizer = await AuthorizerFactory.getAuthorizer();
         // let bearerToken = await endpoint.getToken();
         // let creds = new TokenCredentials(bearerToken);
         var taskParams = TaskParameters.getTaskParams();
-        console.log("Deployment Step Started 5");
         let credential: TokenCredential = new DefaultAzureCredential()
-        console.log("Deployment Step Started 6");
 
         console.log("Predeployment Steps Started");
         const client = new ContainerAppsAPIClient(credential, taskParams.subscriptionId);
-        console.log("Deployment Step Started 7");
 
         const containerAppEnvelope: ContainerApp = {
             configuration: {
