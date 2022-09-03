@@ -24,7 +24,7 @@
     "@actions/core": "^1.9.1",
     "@azure/arm-appcontainers": "^1.1.0",
     "@azure/identity": "^2.1.0",
-    "debug": "^4.3.4"
+    "debug": "^5.0.1"
   },
   "devDependencies": {
     "@types/node": "^13.13.52"
