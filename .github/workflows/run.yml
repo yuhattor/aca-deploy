@@ -24,5 +24,5 @@ jobs:
       with:
         resource-group: sample-rg
         name: yuhattor-container3
-        location: 'eastus'
+        location: 'east us'
         subscription-id: 'a4deccb1-a1f6-40cb-a923-f55a7d22c32d'

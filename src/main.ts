@@ -54,7 +54,7 @@ async function main() {
               //  ]
               //}
             },
-            location: "East US",
+            location: "east us",
             managedEnvironmentId:
               "/subscriptions/a4deccb1-a1f6-40cb-a923-f55a7d22c32d/resourceGroups/sample-rg/providers/Microsoft.App/managedEnvironments/testenv2",
             template: {
@@ -62,30 +62,30 @@ async function main() {
                 {
                   name: "mynginx",
                   image: "nginx:latest",
-                  probes: [
-                    {
-                      type: "Liveness",
-                      httpGet: {
-                        path: "/health",
-                        httpHeaders: [{ name: "Custom-Header", value: "Awesome" }],
-                        port: 8080
-                      },
-                      initialDelaySeconds: 3,
-                      periodSeconds: 3
-                    }
-                  ]
+                  //probes: [
+                  //  {
+                  //    type: "Liveness",
+                  //    httpGet: {
+                  //      path: "/health",
+                  //      httpHeaders: [{ name: "Custom-Header", value: "Awesome" }],
+                  //      port: 8080
+                  //    },
+                  //    initialDelaySeconds: 3,
+                  //    periodSeconds: 3
+                  //  }
+                  //]
                 }
               ],
-              scale: {
-                maxReplicas: 5,
-                minReplicas: 1,
-                rules: [
-                  {
-                    name: "httpscalingrule",
-                    custom: { type: "http", metadata: { concurrentRequests: "50" } }
-                  }
-                ]
-              }
+              //scale: {
+              //  maxReplicas: 5,
+              //  minReplicas: 1,
+              //  rules: [
+              //    {
+              //      name: "httpscalingrule",
+              //      custom: { type: "http", metadata: { concurrentRequests: "50" } }
+              //    }
+              //  ]
+              //}
             }
           };
 
