@@ -14,6 +14,7 @@ var prefix = !!process.env.AZURE_HTTP_USER_AGENT ? `${process.env.AZURE_HTTP_USE
 
 async function main() {
 
+    
     try {
         // Set user agent variable
         let usrAgentRepo = crypto.createHash('sha256').update(`${process.env.GITHUB_REPOSITORY}`).digest('hex');
