@@ -34,7 +34,6 @@ export class TaskParameters {
     }
 
 
-    private _endpoint: IAuthorizer;
     //private _commandLine: Array<string>;
     //private _cpu: number;
     //private _diagnostics: ContainerInstanceManagementModels.ContainerGroupDiagnostics;
