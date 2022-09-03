@@ -27,3 +27,6 @@ jobs:
         location: 'East US'
         subscription-id: 'a4deccb1-a1f6-40cb-a923-f55a7d22c32d'
         managed-environment-name: 'my-container-env'
+        daprAppPort: 3000
+        daprAppProtocol: 'http'
+        daprEnabled: true
