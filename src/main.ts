@@ -26,17 +26,14 @@ async function main() {
         const client = new ContainerAppsAPIClient(credential, taskParams.subscriptionId);
 
         const containerAppEnvelope: ContainerApp = {
-            //configuration: {
-            //  dapr: { appPort: 3000, appProtocol: "http", enabled: true },
-            //},
             location: "East US",
             managedEnvironmentId:
-              "/subscriptions/a4deccb1-a1f6-40cb-a923-f55a7d22c32d/resourceGroups/sample-rg/providers/Microsoft.App/managedEnvironments/testenv2",
+              "/subscriptions/a4deccb1-a1f6-40cb-a923-f55a7d22c32d/resourceGroups/sample-rg/providers/Microsoft.App/managedEnvironments/my-container-env",
             template: {
               containers: [
                 {
                   name: "simple-hello-world-container",
-                  image: "azuredocs/containerapps-helloworld",
+                  image: "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
                 }
               ],
             }
