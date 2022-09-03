@@ -22,8 +22,7 @@
     "@azure/arm-appcontainers": "^1.1.0",
     "@azure/identity": "^2.1.0",
     "@types/q": "^1.5.2",
-    "azure-actions-webclient": "^1.0.10",
-    "tsc": "^2.0.4"
+    "azure-actions-webclient": "^1.0.10"
   },
   "devDependencies": {
     "@types/node": "^13.5.2",
