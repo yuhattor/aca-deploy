@@ -44,18 +44,13 @@ async function main() {
             containerAppEnvelope,
             );
         
-        console.log(containerAppDeploymentResult)
-        if(containerAppDeploymentResult.name){
-          console.log("Deployment Succeeded.");
-          //let appUrlWithoutPort = containerAppDeploymentResult.properties.ingress.fqdn;
-          //let port = taskParams.ports[0].port;
-          //let appUrl = "http://"+appUrlWithoutPort+":"+port.toString()+"/"
-          //core.setOutput("app-url", appUrl);
-          //console.log("Your App has been deployed at: "+appUrl);
-          console.log("Deployment Result: " + containerAppDeploymentResult);
-        } else {
-          throw Error("Container Deployment Failed" + containerAppDeploymentResult);
-        }
+        console.log("Deployment Succeeded.");
+        //let appUrlWithoutPort = containerAppDeploymentResult.properties.ingress.fqdn;
+        //let port = taskParams.ports[0].port;
+        //let appUrl = "http://"+appUrlWithoutPort+":"+port.toString()+"/"
+        //core.setOutput("app-url", appUrl);
+        //console.log("Your App has been deployed at: "+appUrl);
+        console.log("Deployment Result: " + containerAppDeploymentResult);
     }
     catch (error: string | any) {
         console.log("Deployment Failed with Error: " + error);
