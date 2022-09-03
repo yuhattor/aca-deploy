@@ -10,27 +10,27 @@ var prefix = !!process.env.AZURE_HTTP_USER_AGENT ? `${process.env.AZURE_HTTP_USE
 async function main() {
 
     try {
-        core.debug("Deployment Step Started 1 ");
+        console.log("Deployment Step Started 1 ");
         // Set user agent variable
         let usrAgentRepo = crypto.createHash('sha256').update(`${process.env.GITHUB_REPOSITORY}`).digest('hex');
-        core.debug("Deployment Step Started 2");
+        console.log("Deployment Step Started 2");
         let actionName = 'DeployAzureContainerApp';
-        core.debug("Deployment Step Started 3");
+        console.log("Deployment Step Started 3");
         let userAgentString = (!!prefix ? `${prefix}+` : '') + `GITHUBACTIONS_${actionName}_${usrAgentRepo}`;
-        core.debug("Deployment Step Started 4");
+        console.log("Deployment Step Started 4");
         core.exportVariable('AZURE_HTTP_USER_AGENT', userAgentString);
 
         // let endpoint: IAuthorizer = await AuthorizerFactory.getAuthorizer();
         // let bearerToken = await endpoint.getToken();
         // let creds = new TokenCredentials(bearerToken);
         var taskParams = TaskParameters.getTaskParams();
-        core.debug("Deployment Step Started 5");
+        console.log("Deployment Step Started 5");
         let credential: TokenCredential = new DefaultAzureCredential()
-        core.debug("Deployment Step Started 6");
+        console.log("Deployment Step Started 6");
 
-        core.debug("Predeployment Steps Started");
+        console.log("Predeployment Steps Started");
         const client = new ContainerAppsAPIClient(credential, taskParams.subscriptionId);
-        core.debug("Deployment Step Started 7");
+        console.log("Deployment Step Started 7");
 
         const containerAppEnvelope: ContainerApp = {
             configuration: {
@@ -97,7 +97,7 @@ async function main() {
           };
 
 
-        core.debug("Deployment Step Started");
+        console.log("Deployment Step Started");
 
         //    "location": taskParams.location,
         //    "containers": [
@@ -139,18 +139,18 @@ async function main() {
             //let appUrl = "http://"+appUrlWithoutPort+":"+port.toString()+"/"
             //core.setOutput("app-url", appUrl);
             //console.log("Your App has been deployed at: "+appUrl);
-            core.debug("Deployment Result: "+containerAppDeploymentResult);
+            console.log("Deployment Result: "+containerAppDeploymentResult);
         } else {
-            core.debug("Deployment Result: "+containerAppDeploymentResult);
+            console.log("Deployment Result: "+containerAppDeploymentResult);
             throw Error("Container Deployment Failed"+containerAppDeploymentResult);
         }
     }
     catch (error) {
-        core.debug("Deployment Failed with Error: " + error);
+        console.log("Deployment Failed with Error: " + error);
         //core.setFailed(error);
     }
     finally{
-        core.debug("ERRRRROOR");
+        console.log("ERRRRROOR");
         // Reset AZURE_HTTP_USER_AGENT
         //core.exportVariable('AZURE_HTTP_USER_AGENT', prefix);
     }
