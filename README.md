@@ -1,6 +1,6 @@
 # (Experimental) GitHub Action for deploying to Azure Container App
 
-> :warning: **NOTE**: This repository has just been created and is not guaranteed to work. It also contains some sample code inside. Therefore, it has not yet been published to the marketplace. Please do not use this one in a production environment. Contributions are welcome.
+> :warning: **NOTE**: This repository has just been created and is not guaranteed to work. It also contains some sample code inside. Therefore, it has not yet been published to the marketplace. Please do not use this one in a production environment. Contributions are welcome. A beta version will be released at the end of September.
 
 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) provides the flexibility to build automated workflows for the software development lifecycle.
 
