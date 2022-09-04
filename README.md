@@ -1,14 +1,18 @@
-# GitHub Action for deploying to Azure Container Instances
+# (Experimental) GitHub Action for deploying to Azure Container App
 
-[GitHub Actions](https://help.github.com/en/articles/about-github-actions) gives you the flexibility to build an automated software development lifecycle workflow. 
+> :warning: **NOTE**: This repository has just been created and is not guaranteed to work. It also contains some sample code inside. Therefore, it has not yet been published to the marketplace. Please do not use this one in a production environment. Contributions are welcome.
 
-You can automate your workflows to deploy to [Azure Container Instances](https://azure.microsoft.com/en-us/services/container-instances/) using GitHub Actions.
+[GitHub Actions](https://help.github.com/en/articles/about-github-actions) provides the flexibility to build automated workflows for the software development lifecycle.
 
-Get started today with a [free Azure account](https://azure.com/free/open-source)!
+GitHub Actions can be used to automate the workflow of deploying to [Azure Container App](https://azure.microsoft.com/en-us/services/container-apps/).
 
-This repository contains [GitHub Action for Deploying to Azure Container Instances](/action.yml) to deploy to Azure Container Instances. It supports deploying your container image to an Azure Container Instance.
+Let's get started today with a [free Azure account](https://azure.com/free/open-source)!
 
-The definition of this GitHub Action is in [action.yml](/action.yml).
+This repository contains to deploy to Azure Container App. It supports deploying your container image to an Azure Container Instance.
+
+This repository contains the [GitHub Action for Deploying to Azure Container App](./action.yml).
+
+The definition of this GitHub Action is in [action.yml](./action.yml).
 
 # End-to-End Sample Workflows
 
@@ -47,45 +51,15 @@ For using any credentials like Azure Service Principal in your workflow, add the
 3. Paste the json response from above Azure CLI to your GitHub Repository > Settings > Secrets > Add a new secret > **AZURE_CREDENTIALS**
 4. Now in the workflow file in your branch: `.github/workflows/workflow.yml` replace the secret in Azure login action with your secret (Refer to the example below)
 
-## Build and Deploy a Node.JS App to Azure Container Instances
+## Build and Deploy a Node.JS App to Azure Container App
 
 ```yaml
 
 on: [push]
 name: Linux_Container_Workflow
 
-jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        steps:
-        # checkout the repo
-        - name: 'Checkout GitHub Action'
-          uses: actions/checkout@master
-          
-        - name: 'Login via Azure CLI'
-          uses: azure/login@v1
-          with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
-        
-        - uses: azure/docker-login@v1
-          with:
-            login-server: contoso.azurecr.io
-            username: ${{ secrets.REGISTRY_USERNAME }}
-            password: ${{ secrets.REGISTRY_PASSWORD }}
-        - run: |
-            docker build .t contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
-            docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
+SAMPLE WORKFLOW WILL BE HERE
 
-        - name: 'Deploy to Azure Container Instances'
-          uses: 'azure/aci-deploy@v1'
-          with:
-            resource-group: contoso
-            dns-name-label: url-for-container
-            image: contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
-            registry-username: ${{ secrets.REGISTRY_USERNAME }}
-            registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-            name: contoso-container
-            location: 'west us'
 ```
 
 ## Example YAML Snippets
@@ -93,45 +67,46 @@ jobs:
 ### Deploying a Container from a public registry
 
 ```yaml
-- uses: Azure/aci-deploy@v1
+- name: 'Deploy to Azure Container Apps'
+- uses: Azure/aca-deploy@v1
   with:
-    resource-group: contoso
-    dns-name-label: url-for-container
-    image: nginx
-    name: contoso-container
-    location: 'east us'
+    resource-group: sample-rg
+    name: yuhattor-test
+    location: 'East US'
+    subscription-id: 'a4deccb1-a1f6-40cb-a923-f55a7d22c32d'
+    managed-environment-name: 'my-container-env'
+    dapr-app-port: 3000
+    dapr-app-protocol: 'http'
+    dapr-enabled: true
+    ingress-custom-domains: ""
+    ingress-external: true
+    ingress-target-port: 3000
+    ingress-traffic: ""
+
 ```
 
-### Deploying a Container with Volumes (from Azure File Share or GitHub Repositories)
+### Samples Action 2 
 ```yaml
-- uses: Azure/aci-deploy@v1
+- name: 'Sample yaml pipeline'
+- uses: Azure/aca-deploy@v1
   with:
-    resource-group: contoso
-    dns-name-label: url-for-container
-    image: nginx
-    name: contoso-container
-    azure-file-volume-share-name: shareName
-    azure-file-volume-account-name: accountName
-    azure-file-volume-account-key: ${{ secrets.AZURE_FILE_VOLUME_KEY }}
-    azure-file-volume-mount-path: /mnt/volume1
-    location: 'east us'
+
 ```
 
-### Deploying a Container with Environment Variables and Command Line
-
-**NOTE**: Secure Environment Variables aren't masked by the Action so use them as Secrets if you want to hide them
-
+### Samples Action 3
 ```yaml
-- uses: Azure/aci-deploy@v1
+- name: 'Sample yaml pipeline'
+- uses: Azure/aca-deploy@v1
   with:
-    resource-group: contoso
-    dns-name-label: url-for-container
-    image: nginx
-    name: contoso-container
-    command-line: /bin/bash a.sh
-    environment-variables: key1=value1 key2=value2
-    secure-environment-variables: key1=${{ secrets.ENV_VAL1 }} key2=${{ secrets.ENV_VAL2 }}
-    location: 'east us'
+
+```
+
+### Samples Action 4
+```yaml
+- name: 'Sample yaml pipeline'
+- uses: Azure/aca-deploy@v1
+  with:
+
 ```
 
 # Contributing
