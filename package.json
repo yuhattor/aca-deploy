@@ -1,6 +1,6 @@
 {
-  "name": "aca-create-action",
-  "version": "0.0.2",
+  "name": "aca-deploy-action",
+  "version": "0.0.1",
   "description": "GitHub Action to Deploy to Azure Container Apps",
   "main": "lib/main.js",
   "scripts": {
@@ -17,9 +17,9 @@
   "author": "Yuki Hattori",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Azure/aca-deploy-action/issues"
+    "url": "https://github.com/Azure/aca-deploy/issues"
   },
-  "homepage": "https://github.com/Azure/aca-deploy-action#readme",
+  "homepage": "https://github.com/Azure/aca-deploy#readme",
   "dependencies": {
     "@actions/core": "^1.9.1",
     "@azure/arm-appcontainers": "^1.1.0",

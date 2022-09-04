@@ -48,15 +48,47 @@ async function main() {
     // TBD: Need to decide how to represent the associative array
     //      For now, it's a default payload
     const ingresConfig = (taskParams.ingressExternal && taskParams.ingressTargetPort && taskParams.ingressTraffic && taskParams.ingressCustomDomains) ? {
-      external: taskParams.ingressExternal, targetPort: taskParams.ingressTargetPort, traffic: taskParams.ingressTraffic, customDomains: taskParams.ingressCustomDomains
+      external: taskParams.ingressExternal, 
+      targetPort: taskParams.ingressTargetPort, 
+      traffic: taskParams.ingressTraffic, 
+      customDomains: taskParams.ingressCustomDomains
     } : {
       // If any one of these is missing, leave it empty.
     }
 
+    // Set up a container probes
+    // TBD: Determine what is required and what is optional for each condition and set them appropriately.
+    //      For now, it's a default payload
+    let containerProbes = [
+      {
+        type: "Liveness",
+        httpGet: {
+          path: "/health",
+          httpHeaders: [{ name: "Custom-Header", value: "Awesome" }],
+          port: 8080
+        },
+        initialDelaySeconds: 3,
+        periodSeconds: 3
+      }
+    ]
+
+    // Set up a scaling setting
+    // TBD: Need to get rules from taskParams. For now, it's a default payload
+    // rules = taskParams.scalingRules
+    const scaleRules = [{ name: "httpscalingrule", custom: { type: "http", metadata: { concurrentRequests: "50" }}}]
+
+    const scaleConfig = {
+      maxReplicas: taskParams.scaleMaxReplicas, 
+      minReplicas: taskParams.scaleMinReplicas, 
+      rules: scaleRules 
+    }
+
+
     const containerAppEnvelope: ContainerApp = {
       configuration: {
         dapr: daprConfig,
-        //ingress: ingresConfig
+        // If the key is defined, key shouldn't be empty. So I commented out this line once.
+        // ingress: ingresConfig
       },
       location: taskParams.location,
       managedEnvironmentId:
@@ -67,18 +99,10 @@ async function main() {
           {
             name: "simple-hello-world-container",
             image: "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+            probes: containerProbes,
           }
         ],
-                   //scale: {
-              //  maxReplicas: 5,
-              //  minReplicas: 1,
-              //  rules: [
-              //    {
-              //      name: "httpscalingrule",
-              //      custom: { type: "http", metadata: { concurrentRequests: "50" } }
-              //    }
-              //  ]
-              //}
+        scale: scaleConfig
       }
     };
 

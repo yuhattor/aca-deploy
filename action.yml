@@ -1,5 +1,6 @@
-name: 'Deploy to Azure Container Instances'
-description: 'Deploy to Containers to Azure Container Instances. github.com/Azure/Actions'
+name: 'Deploy to Azure Container App'
+description: 'Deploy Containers to Azure Container App. github.com/Azure/Actions'
+
 inputs:
     resource-group:
         description: 'Name of the Resource Group in which the Container Instance will be created'
@@ -37,13 +38,19 @@ inputs:
     ingress-traffic:
         description: 'Ingress Traffic'
         required: false
+    scale-max-replicas:
+        description: 'Max Replicas'
+        required: false
+    scale-min-replicas:
+        description: 'Min Replicas'
+        required: false
 
 outputs:
-    app-url:
-        description: 'URL of the Deployed Application'
+    container-result:
+        description: 'Sample: Container Result'
 branding:
-    icon: 'azure-logo.svg'
+    icon: 'container-app-logo.svg'
     color: 'blue'
 runs:
-    using: 'node12'
+    using: 'node16'
     main: 'lib/main.js'
