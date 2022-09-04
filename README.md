@@ -8,7 +8,7 @@ GitHub Actions can be used to automate the workflow of deploying to [Azure Conta
 
 Let's get started today with a [free Azure account](https://azure.com/free/open-source)!
 
-This repository contains to deploy to Azure Container App. It supports deploying your container image to an Azure Container Instance.
+This repository contains to deploy to Azure Container App. It supports deploying your container image to an Azure Container App.
 
 This repository contains the [GitHub Action for Deploying to Azure Container App](./action.yml).
 

@@ -3,7 +3,7 @@ description: 'Deploy Containers to Azure Container App. github.com/Azure/Actions
 
 inputs:
     resource-group:
-        description: 'Name of the Resource Group in which the Container Instance will be created'
+        description: 'Name of the Resource Group in which the Container App will be created'
         required: true
     location:
         description: 'Location where the Container will be deployed'
